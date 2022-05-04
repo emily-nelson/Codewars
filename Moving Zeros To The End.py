@@ -5,6 +5,11 @@
 # loop through array until 0 is located, move to last position?
 
 def move_zeros(array):
-    return array
+    
+    for num in array:
 
-# modified
+        if num == 0:
+            array.remove(num)
+            array.append(0)
+
+    return array
