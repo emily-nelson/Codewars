@@ -18,7 +18,8 @@ Example scoring
  1 1 1 3 1   1100: 1000 (for three 1s) + 100 (for the other 1)
  2 4 4 5 4   450:  400 (for three 4s) + 50 (for the 5)"""
 
-
+# if count returns 3+ and not a 1, score += (num * 100)
+# if num is 1 or 5
 
 def score(dice):
     unique = set(dice)
@@ -26,18 +27,16 @@ def score(dice):
     score = 0
     for num in unique:
         print(score)
-        if num == 1:
-            if dice.count(num) == 1:
-                score += 100
-            elif dice.count(num) >= 3:
-                score += 1000
-        elif num == 5:
-            if dice.count(num) == 1:
-                score += 50
-        elif dice.count(num) >= 3:
+        if dice.count(num) >= 3 and num != 1:
             score += (num * 100)
+        elif num == 5 and dice.count(num) < 3:
+            score += (dice.count(num)*50)
+        elif num == 1 and dice.count(num) < 3:
+            score += (dice.count(num)*100)
+        elif num == 1 and dice.count(num) >= 3:
+            score += 1000
     return score
 
-array = [3, 3, 3, 3, 3]
+array = [1, 1, 1, 1, 5]
 
 print(score(array))
