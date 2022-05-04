@@ -33,8 +33,10 @@ def score(dice):
             score += (dice.count(num)*50)
         elif num == 1 and dice.count(num) < 3:
             score += (dice.count(num)*100)
-        elif num == 1 and dice.count(num) >= 3:
+        elif num == 1 and dice.count(num) == 3:
             score += 1000
+        elif num == 1 and dice.count(num) > 3:
+            score += 1100
     return score
 
 array = [1, 1, 1, 1, 5]
